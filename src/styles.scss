@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+// $border-color: rgb(146, 193, 219);
+$theme-colors: (
+    green-1:rgb(146, 193, 219),
+);
+$font-family-base: Segoe UI;
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

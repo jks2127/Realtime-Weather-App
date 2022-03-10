@@ -1,0 +1,206 @@
+<div class="d-flex flex-column flex-md-row flex-nowrap justify-content-around py-0 px-4 mb-2">
+    <div class="d-flex flex-row mx-auto flex-grow-1 text-left mx-auto" style="min-width: 50%; ">
+        <div class="flex-grow-1" style="min-width: 30%; width: 100%; ">
+            <div class="d-flex" style="font-size:smaller;">
+                <div class="font-weight-bold text-green-1 text-left">AIR QUALITY</div>
+                <div class="font-weight-bold text-green-1 text-right ml-auto">AQI(US)</div>
+            </div>
+            <div class="font-weight-light text-left " style="font-size:xx-large;">
+                <span>{{airQualityIndex | number:'1.0-0'}} - Moderate</span>
+            </div>
+            <div class="progress-h rounded pr-2" style="height: 8px;">
+                <div class="rounded" [style]="hProgress"></div>
+            </div>
+            <div class="font-weight-bold text-green-1 text-smaller" >Air quality for {{dataObj.location.name || '-'}}.</div>
+            <a href="https://weather.com/en-IN/weather/hourbyhour/l/210fd75d2390dda9d571b110ec978df37e33bd6719cc7a7d284a4ce83c140e4c" >More data from The Weather Channel.</a>
+            <!-- <img src="../../../assets/images/graph3.jpg" style="width: 320px; height: 150px;"/> -->
+        </div>
+        <div class="d-flex flex-row mx-4" style="min-width: 35px; ">
+            <div class="mx-2">
+                <div class="text-nowrap">UV INDEX</div>
+                <div class="" style="font-size: 50px; color: rgb(255, 223, 80);">{{dataObj.current.uv | number:'1.1-1'}}</div>
+                <div class="">Moderate</div>
+            </div>
+            <div class="px-2">
+                <div class="progress-v position-absolute rounded my-2" style="width: 7px; height: 110px;">
+                    <div class="position-relative rounded" [style]="vProgress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row progress-circle-container">
+        <!-- First progress circle -->
+        <div class="circle-wrap">
+            <div class="circle">
+                <div class="inside-circle font-weight-bold"> &#176;C </div>
+                <div class="cover1"></div>
+                <div class="cover2"></div>
+                <div class="cover3"></div>
+
+                <ng-container *ngIf="currentTime < 12">
+                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[3]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[4]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[5]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[6]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[7]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[8]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[9]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[10]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[11]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[12]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[13]?.temp_c | number:'1.0-0'}}</div>
+                </ng-container>
+                <ng-container *ngIf="currentTime >= 12">
+                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[15]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[16]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[17]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[18]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[19]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[20]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[21]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[22]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[23]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[0]?.temp_c | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[1]?.temp_c | number:'1.0-0'}}</div>    
+                </ng-container>
+
+                <div class="nums inner-num1">3</div>
+                <div class="nums inner-num2">4</div>
+                <div class="nums inner-num3">5</div>
+                <div class="nums inner-num4">6</div>
+                <div class="nums inner-num5">7</div>
+                <div class="nums inner-num6">8</div>
+                <div class="nums inner-num7">9</div>
+                <div class="nums inner-num8">10</div>
+                <div class="nums inner-num9">11</div>
+                <div class="nums inner-num10">12</div>
+                <div class="nums inner-num11">1</div>
+                
+                <div class="mover">
+                    <div class="moverDot"></div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Second progress circle -->
+        <div class="circle-wrap">
+            <div class="circle">
+                <div class="inside-circle font-weight-bold">  18&#176; </div>
+                <div class="cover1"></div>
+                <div class="cover2"></div>
+                <div class="cover3"></div>
+
+
+                <div class="nums num1">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num2">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num3">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num4">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num5">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num6">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num7">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num8">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num9">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num10">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+                <div class="nums num11">
+                    <img src="../../../../assets/images/cloudy.png" height="13px" width="13px">
+                </div>
+
+                <div class="nums inner-num1">3</div>
+                <div class="nums inner-num2">4</div>
+                <div class="nums inner-num3">5</div>
+                <div class="nums inner-num4">6</div>
+                <div class="nums inner-num5">7</div>
+                <div class="nums inner-num6">8</div>
+                <div class="nums inner-num7">9</div>
+                <div class="nums inner-num8">10</div>
+                <div class="nums inner-num9">11</div>
+                <div class="nums inner-num10">12</div>
+                <div class="nums inner-num11">1</div>
+                
+                <div class="mover">
+                    <div class="moverDot"></div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Third progress circle -->
+        <div class="circle-wrap">
+            <div class="circle">
+                <div class="inside-circle font-weight-bold pl-1">
+                    <img src="../../../../assets/images/umbrella-32.png" width="30px">
+                    <div style="font-size:12px; position: relative; margin-left: 20px; margin-top: -38px;">%</div>
+                </div>
+                <div class="cover1"></div>
+                <div class="cover2"></div>
+                <div class="cover3"></div>
+
+                <ng-container *ngIf="currentTime < 12; else elseblock">
+                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[3]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[4]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[5]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[6]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[7]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[8]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[9]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[10]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[11]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[12]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[13]?.chance_of_rain | number:'1.0-0'}}</div>
+                </ng-container>
+                <ng-template #elseblock>
+                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[15]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[16]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[17]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[18]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[19]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[20]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[21]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[22]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[23]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[0]?.chance_of_rain | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[1]?.chance_of_rain | number:'1.0-0'}}</div>
+                </ng-template>
+
+                <div class="nums inner-num1">3</div>
+                <div class="nums inner-num2">4</div>
+                <div class="nums inner-num3">5</div>
+                <div class="nums inner-num4">6</div>
+                <div class="nums inner-num5">7</div>
+                <div class="nums inner-num6">8</div>
+                <div class="nums inner-num7">9</div>
+                <div class="nums inner-num8">10</div>
+                <div class="nums inner-num9">11</div>
+                <div class="nums inner-num10">12</div>
+                <div class="nums inner-num11">1</div>
+                
+                <div class="mover">
+                    <div class="moverDot"></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

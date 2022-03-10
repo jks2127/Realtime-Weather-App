@@ -1,0 +1,215 @@
+.progress-h {
+    background-image: linear-gradient(to right,
+     rgb(0, 223, 30), rgb(212, 209, 0), rgb(212, 209, 0),rgba(247, 0, 0, 0.568),rgba(214, 14, 0, 0.801),
+     rgb(184, 2, 201), rgb(184, 2, 201), rgb(181, 4, 197), rgb(116, 5, 131),rgb(105, 0, 32));
+}
+.progress-v {
+    background-image: linear-gradient(to top,
+     rgb(0, 223, 30), rgb(212, 209, 0), rgb(212, 209, 0),rgba(247, 0, 0, 0.568),rgba(214, 14, 0, 0.801),
+     rgb(184, 2, 201), rgb(184, 2, 201), rgb(181, 4, 197), rgb(116, 5, 131),rgb(105, 0, 32));
+}
+
+.text-smaller {
+    font-size:smaller;
+}
+/* unvisited link */
+a:link, a:visited, a:hover {
+    text-decoration: none;
+    font-size:small;
+    font-weight: bold;
+    color:rgb(146, 193, 219);
+}
+ 
+//styles for progress-circle
+.progress-circle-container {
+    min-width: 50%; height: auto; padding-left: 30px; padding-right: 30px;padding-top: 10px;
+}
+.circle-wrap {
+    margin: 10px auto;
+    width: 82px;
+    height: 82px;
+    background-color: #66b9e9;
+    border-radius: 50%;
+}
+.cover1 {
+    background-color:  #66b9e9;
+    position: absolute;
+    z-index: 110;
+    height: 17px;
+    width: 16px;
+    border-radius: 10px;
+    margin-left: 66px;
+    margin-right: 10px;
+    margin-top: 30px;
+}
+.cover2 {
+    background-color:  #66b9e9;
+    position: absolute;
+    z-index: 110;
+    height: 16px;
+    width: 15px;
+    border-radius: 10px;
+    margin-left: 52px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.cover3 {
+    background-color: #4F9BC4;
+    position: absolute;
+    z-index: 100;
+    height: 32px;
+    width: 30px;
+    border-radius: 10px;
+    margin-left: 54px;
+    margin-right: 10px;
+    margin-top: 8px;
+}
+.mover {
+    background-color: rgba(129, 0, 0, 0);
+    position: relative;
+    z-index: 120;
+    height: 82px;
+    width: 82px;
+    border-radius: 0px;
+    animation: mover 2s ;
+}
+.moverDot {
+    position: absolute;
+    background-color: rgb(104, 217, 252);
+    border-radius: 10px;
+    z-index: 120;
+    height: 20px;
+    width: 20px;
+    margin-top: 37%;
+    margin-left: 78%;
+}
+@keyframes mover{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+// .outer-circle {
+//     background-color: #0303033d;
+//     width: 110px;
+//     height: 110px;
+//     padding-left: auto;
+//     padding-top: 5px;
+// }
+.nums {
+    color: rgb(205, 243, 255);
+    font-weight: 500;
+    font-size: small;
+    position: absolute;
+    z-index: 110;
+    height: 16px;
+    width: 15px;
+}
+
+.num1 {
+    margin-left: 87px;
+    margin-right: 10px;
+    margin-top: 30px;
+}.num2 {
+    margin-left: 82px;
+    margin-top: 55px;
+}.num3 {
+    margin-left: 64px;
+    margin-top: 75px;
+}.num4 {
+    margin-left: 36px;
+    margin-top: 82px;
+}.num5 {
+    margin-left: 8px;
+    margin-top: 75px;
+}.num6 {
+    margin-left: -14px;
+    margin-top: 55px;
+}.num7 {
+    margin-left: -19px;
+    margin-top: 30px;
+}.num8 {
+    margin-left: -12px;
+    margin-top: 3px
+}.num9 {
+    margin-left: 8px;
+    margin-top: -13px
+}.num10 {
+    margin-left: 36px;
+    margin-top: -20px
+}.num11 {
+    margin-left: 64px;
+    margin-top: -13px
+}
+
+.inner-num1 {
+    margin-left: 70px;
+    margin-right: 10px;
+    margin-top: 30px;
+}.inner-num2 {
+    margin-left: 63px;
+    margin-top: 48px;
+}.inner-num3 {
+    margin-left: 53px;
+    margin-top: 60px;
+}.inner-num4 {
+    margin-left: 38px;
+    margin-top: 64px;
+}.inner-num5 {
+    margin-left: 22px;
+    margin-top: 60px;
+}.inner-num6 {
+    margin-left: 10px;
+    margin-top: 48px;
+}.inner-num7 {
+    margin-left: 4px;
+    margin-top: 31px;
+}.inner-num8 {
+    margin-left: 6px;
+    margin-top: 13px
+}.inner-num9 {
+    margin-left: 20px;
+    margin-top: 1px
+}.inner-num10 {
+    margin-left: 36px;
+    margin-top: -3px
+}.inner-num11 {
+    margin-left: 57px;
+    margin-top: 3px
+}
+
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.circle-wrap .circle .mask {
+    // clip-path: circle(80px at 80px 80px);
+    clip: rect(20px, 400px, 400px, 23px);
+
+}
+
+.circle-wrap .inside-circle {
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    background: #4F9BC4;
+    line-height: 50px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 15px;
+    color: #ffffff;
+    position: absolute;
+    z-index: 100;
+    font-size: 20px;
+}
+
+
+
+
