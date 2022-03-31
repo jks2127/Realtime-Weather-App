@@ -20,7 +20,7 @@ export class HourlyComponent implements OnInit {
 
   }
   ngAfterViewChecked() {        
-    // document.getElementById(this.epochNow.toString())?.scrollIntoView({inline: "start", behavior: 'smooth' });
+    document.getElementById(this.epochNow.toString())?.scrollIntoView({inline: "start", behavior: 'smooth' });
     // console.log(document.getElementById(this.epochNow.toString()));
 
   }

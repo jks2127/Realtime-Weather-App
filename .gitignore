@@ -1,45 +1,45 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
+.gitignore
 # compiled output
-/dist
-/tmp
-/out-tsc
+front_end/dist
+front_end/tmp
+front_end/out-tsc
 # Only exists if Bazel was run
-/bazel-out
+front_end/bazel-out
 
 # dependencies
-/node_modules
+front_end/node_modules
 
 # profiling files
-chrome-profiler-events*.json
+front_end/chrome-profiler-events*.json
 
 # IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+front_end/.idea
+front_end/.project
+front_end/.classpath
+front_end/.c9/
+front_end/*.launch
+front_end/.settings/
+front_end/*.sublime-workspace
 
 # IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+front_end/.vscode/*
+front_end/!.vscode/settings.json
+front_end/!.vscode/tasks.json
+front_end/!.vscode/launch.json
+front_end/!.vscode/extensions.json
+front_end/.history/*
 
 # misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+front_end/.sass-cache
+front_end/connect.lock
+front_end/coverage
+front_end/libpeerconnection.log
+front_end/npm-debug.log
+front_end/yarn-error.log
+front_end/testem.log
+front_end/typings
 
 # System Files
-.DS_Store
-Thumbs.db
+front_end/.DS_Store
+front_end/Thumbs.db

@@ -152,28 +152,42 @@ export class WeatherPageComponent implements OnInit {
       ]
     },     
   };
-
+  toggleValue:boolean = false;
   constructor(private http: HttpClient) {
-    const params = new HttpParams()
-                      .set('key','dd57e8592cde4ad999261418220803')
-                      .set('q','Bhubaneswar')
-                      .set('aqi', 'yes')
-                      .set('alerts','no')
-                      .set('days', 6);
-    const data = this.http.request("GET", " http://api.weatherapi.com/v1/forecast.json", {params});
- 
-    data.subscribe((val)=>{
-      this.dataObj = val;
-      
-      console.log(this.dataObj);
-    });
-    
+    this.apiCall({cityName:'bhubaneswar', pinCode:''});
     // console.log(dummyData);
     // this.dataObj = dummyData;
     
+  }
+  
+  apiCall(formData: any) {
+    const params = new HttpParams()
+    .set('key','dd57e8592cde4ad999261418220803')
+    .set('q', formData.cityName)
+    .set('aqi', 'yes')
+    .set('alerts','no')
+    .set('days', 6);
+
+    const data = this.http.request("GET", " http://api.weatherapi.com/v1/forecast.json", {params});
+
+    data.subscribe((val)=>{
+      this.dataObj = val;
+      console.log(this.dataObj);
+    });
   }
 
   ngOnInit(): void {
   }
 
+  getFormData(formData: any) {
+    console.log("@output works on parent");
+    
+    console.log(formData);
+    this.apiCall(formData);
+  }
+
+  menuToggle(val:any) {
+    console.log("menu button clicked weather page", val);
+    this.toggleValue= val;
+  }
 }

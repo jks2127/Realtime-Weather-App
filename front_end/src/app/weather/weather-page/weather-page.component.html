@@ -5,9 +5,11 @@
     <app-hourly [dataObj]="dataObj"></app-hourly>
     <app-weakly [dataObj]="dataObj"></app-weakly>
     <app-graphs [dataObj]="dataObj"></app-graphs>
-    <app-footer></app-footer>
-
-    <!-- <app-right-pane class="side-pane"></app-right-pane> -->
+    <app-footer (menuToggleValue)="menuToggle($event)"></app-footer>
+        
+    <ng-container *ngIf="toggleValue">
+        <app-right-pane class="side-pane" (outputFormData)="getFormData($event)" (toggleValue)="menuToggle($event)"></app-right-pane>
+    </ng-container>
 
     </div>
 </div>

@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import { RightPaneComponent } from './components/right-pane/right-pane.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { RightPaneComponent } from './components/right-pane/right-pane.component
   imports: [
     CommonModule,
     WeatherRoutingModule,
+    ReactiveFormsModule
   ],
   bootstrap: [WeatherPageComponent]
 })

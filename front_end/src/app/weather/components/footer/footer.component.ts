@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
+  @Output() menuToggleValue = new EventEmitter();
+  toggle:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
   menuToggle() {
     console.log("menu button clicked");
+    this.menuToggleValue.emit(!this.toggle);
     
   }
 
