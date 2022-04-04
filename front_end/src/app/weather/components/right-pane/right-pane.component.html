@@ -2,11 +2,10 @@
 
     <form [formGroup]="weatherForm" (ngSubmit)="weatherFormSubmit()" class="form" >
         <input type="text" formControlName="cityName" name="cityName" class="input-tag" placeholder="Your Nearest City Name">
-        <div class="ml-2">OR</div>
-        <input type="text" formControlName="pinCode" name="pinCode" class="input-tag" placeholder="Postal Pincode">
+        <!-- <div class="ml-2">OR</div>
+        <input type="text" formControlName="pinCode" name="pinCode" class="input-tag" placeholder="Postal Pincode"> -->
         <button type="submit">SUBMIT</button>
         <button (click)="close()">close</button>
-
     </form>
 
 </div>

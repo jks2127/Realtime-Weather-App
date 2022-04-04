@@ -13,7 +13,7 @@ export class RightPaneComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) { }
 
   weatherForm = this.formBuilder.group({
-    cityName:[''],
+    cityName:['bhubaneswar'],
     pinCode:[''],
   })
 

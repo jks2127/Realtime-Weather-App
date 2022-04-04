@@ -11,7 +11,7 @@ const routes: Routes = [
     component: NgrxIncrementDecrementComponent,
   },
   {
-    path: 'weather',
+    path: '',
     loadChildren: () => import('./weather/weather.module').then(m => m.WeatherModule)
     // component: WeatherPageComponent
   },

@@ -4,10 +4,10 @@
             <div class="row" *ngIf="item.date !== todayDate">
                 <span class=" mb-1 col-6 ">{{item.date | date: 'EEEE'}}</span>
                 <span class="col-2 mb-2">
-                    <img class="" src="../../../assets/images/cloudy.png" style="width: 20px; height: 20px;"/>
+                    <img class="" src="{{item.day.condition.icon}}" style="width: 25px; height: 25px;"/>
                 </span>
-                <div class="col-2 text-right p-0">{{item.day.maxtemp_c | number:'1.0-0'}}</div>
-                <div class="col-2 text-left text-green-1 font-weight-bold">{{item.day.mintemp_c | number:'1.0-0'}}</div>
+                <div class="col-2 text-right p-0">{{item.day.maxtempC | number:'1.0-0'}}</div>
+                <div class="col-2 text-left text-green-1 font-weight-bold">{{item.day.mintempC | number:'1.0-0'}}</div>
             </div>
         </div>
         
@@ -20,13 +20,13 @@
             Sunset: {{dataObj.forecast.forecastday[0].astro.sunset && dataObj.forecast.forecastday[0].astro.sunset || '-'}}
         </div>
         <div class="mx-auto mb-2" style="width: 200px;">
-            Feels Like: {{dataObj.current.feelslike_c && dataObj.current.feelslike_c  || '-'}} &#176;C
+            Feels Like: {{dataObj.current.feelslikeC && dataObj.current.feelslikeC  || '-'}} &#176;C
         </div>
         <div class="mx-auto mb-2" style="width: 200px;">
             Humidity: {{dataObj.current.humidity && dataObj.current.humidity + '%' || '-'}}
         </div>
         <div class="mx-auto mb-2" style="width: 200px;">
-            Wind: {{dataObj.current.wind_kph && dataObj.current.wind_dir + ' ' + dataObj.current.wind_kph + " kmph" || '-'}}
+            Wind: {{dataObj.current.windKph && dataObj.current.windDir + ' ' + dataObj.current.windKph + " kmph" || '-'}}
         </div>
     </div>
 </div>

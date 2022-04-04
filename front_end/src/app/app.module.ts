@@ -8,7 +8,7 @@ import { NgrxIncrementDecrementComponent } from './ngrx-increment-decrement/ngrx
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './reducers/incDec.reducer';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +16,11 @@ import { HttpClientModule } from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     StoreModule.forRoot({count: counterReducer}),
     NgbModule,
-    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,141 +12,144 @@ export class WeatherPageComponent implements OnInit {
   counter = 0 ;
   dataObj: any={
     'location': {
-      'name': "-",
-      'country': "-",
-      'localtime': "-"
+      name: "-",
+      country: "-",
+      region: "-",
+      tzId: "-",
+      lat: 0,
+      lon: 0,
+      localtime: "-",
+      localtimeEpoch: 0,
     },
     "current": {
-      "last_updated_epoch": 0,
-      "last_updated": "-",
-      "temp_c": '-',
-      "is_day": 1,
-      "wind_kph": 0,
-      "wind_degree": 0,
-      "wind_dir": "-",
-      "pressure_mb": 0,
-      "pressure_in": 29.88,
-      "humidity": '-',
-      "cloud": 0,
-      "feelslike_c": '-',
+      airQuality: {co: 0, no2: 0, o3: 0, so2: 0, pm25: 0, usEpaIndex: 0},
+      condition: {text: '-', icon: '-', code: 0},
+      tempC: 0,
+      tempF: 0,
+      pressureIn: 0,
+      pressureMb: 0,
+      feelslikeC: 0,
+      feelslikeF: 0,
+      lastUpdated: "",
+      lastUpdatedEpoch: 0,
+      uv: 0,
+      windDegree: 0,
+      windDir: "-",
+      windKph: 0,
+      windMph: 0,
+      cloud: 0,
+      humidity: 0,
+      gustKph: 0,
+      gustMph: 0,
+      visKm: 0,
+      visMiles: 0,
+      isDay: 0,
     },
     "forecast": {
       "forecastday": [
         {
-          "date": "2022-03-08",
-          "date_epoch": 1646697600,
+          date: "",
+          dateEpoch: 0,
           "day": {
-            "maxtemp_c": 38.2,
-            "maxtemp_f": 100.8,
-            "mintemp_c": 21.7,
-            "mintemp_f": 71.1,
-            "avgtemp_c": 28.2,
-            "avgtemp_f": 82.8,
-            "maxwind_mph": 10.3,
-            "maxwind_kph": 16.6,
-            "totalprecip_mm": 0.0,
-            "totalprecip_in": 0.0,
-            "avgvis_km": 10.0,
-            "avgvis_miles": 6.0,
-            "avghumidity": 58.0,
-            "daily_will_it_rain": 0,
-            "daily_chance_of_rain": 0,
-            "daily_will_it_snow": 0,
-            "daily_chance_of_snow": 0,
-            "condition": {
-                "text": "Sunny",
-                "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-                "code": 1000
-            },
-            "uv": 11.0
+            maxtempC: 0,
+            maxtempF: 0,
+            mintempC: 0,
+            mintempF: 0,
+            avgtempC: 0,
+            avgtempF: 0,
+            uv: 0,
+            maxwindKph: 0,
+            maxwindMph: 0,
+            avghumidity: 0,
+            avgvisKm: 0,
+            avgvisMiles: 0,
+            dailyChanceOfRain: 0,
+            dailyChanceOfSnow: 0,
+            dailyWillItRain: 0,
+            dailyWillItSnow: 0,
+            totalprecipIn: 0,
+            totalprecipMm: 0,
+            "condition": {text: "", icon: "", code: 0},
           },
           "astro": {
-            "sunrise": "06:01 AM",
-            "sunset": "05:54 PM",
-            "moonrise": "09:37 AM",
-            "moonset": "11:00 PM",
-            "moon_phase": "Waxing Crescent",
-            "moon_illumination": "34"
+            sunrise: "-",
+            sunset: "-",
+            moonrise: "-",
+            moonset: "-",
+            moonPhase: "-",
+            moonIllumination: "-"
           },
           "hour": [
             {
-              "time_epoch": 1646677800,
-              "time": "2022-03-08 00:00",
-              "temp_c": 23.2,
-              "temp_f": 73.8,
-              "is_day": 0,
-              "condition": {
-                  "text": "Clear",
-                  "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
-                  "code": 1000
-              },
-              "wind_mph": 4.7,
-              "wind_kph": 7.6,
-              "wind_degree": 215,
-              "wind_dir": "SW",
-              "pressure_mb": 1012.0,
-              "pressure_in": 29.89,
-              "precip_mm": 0.0,
-              "precip_in": 0.0,
-              "humidity": 75,
-              "cloud": 0,
-              "feelslike_c": 25.1,
-              "feelslike_f": 77.2,
-              "windchill_c": 23.2,
-              "windchill_f": 73.8,
-              "heatindex_c": 25.1,
-              "heatindex_f": 77.2,
-              "dewpoint_c": 18.4,
-              "dewpoint_f": 65.1,
-              "will_it_rain": 0,
-              "chance_of_rain": 0,
-              "will_it_snow": 0,
-              "chance_of_snow": 0,
-              "vis_km": 10.0,
-              "vis_miles": 6.0,
-              "gust_mph": 8.9,
-              "gust_kph": 14.4,
-              "uv": 1.0
+              tempC: 0,
+              tempF: 0,
+              feelslikeC: 0,
+              feelslikeF: 0,
+              time: "",
+              timeEpoch: 0,
+              uv: 0,
+              heatindexC: 0,
+              heatindexF: 0,
+              pressureIn: 0,
+              pressureMb: 0,
+              chanceOfRain: 0,
+              chanceOfSnow: 0,
+              windDegree: 0,
+              windDir: "",
+              windKph: 0,
+              windMph: 0,
+              windchillC: 0,
+              windchillF: 0,
+              condition: {text: '-', icon: '-', code: 0},
+              dewpointC: 0,
+              dewpointF: 0,
+              gustKph: 0,
+              gustMph: 0,
+              cloud: 0,
+              humidity: 0,
+              precipIn: 0,
+              precipMm: 0,
+              visKm: 0,
+              visMiles: 0,
+              willItRain: 0,
+              willItSnow: 0,
+              isDay: 0,
             },
             {
-              "time_epoch": 1646681400,
-              "time": "2022-03-08 01:00",
-              "temp_c": 22.9,
-              "temp_f": 73.2,
-              "is_day": 0,
-              "condition": {
-                  "text": "Clear",
-                  "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
-                  "code": 1000
-              },
-              "wind_mph": 4.7,
-              "wind_kph": 7.6,
-              "wind_degree": 217,
-              "wind_dir": "SW",
-              "pressure_mb": 1011.0,
-              "pressure_in": 29.86,
-              "precip_mm": 0.0,
-              "precip_in": 0.0,
-              "humidity": 77,
-              "cloud": 0,
-              "feelslike_c": 25.0,
-              "feelslike_f": 77.0,
-              "windchill_c": 22.9,
-              "windchill_f": 73.2,
-              "heatindex_c": 25.0,
-              "heatindex_f": 77.0,
-              "dewpoint_c": 18.7,
-              "dewpoint_f": 65.7,
-              "will_it_rain": 0,
-              "chance_of_rain": 0,
-              "will_it_snow": 0,
-              "chance_of_snow": 0,
-              "vis_km": 10.0,
-              "vis_miles": 6.0,
-              "gust_mph": 9.2,
-              "gust_kph": 14.8,
-              "uv": 1.0
-            },
+              tempC: 0,
+              tempF: 0,
+              feelslikeC: 0,
+              feelslikeF: 0,
+              time: "",
+              timeEpoch: 0,
+              uv: 0,
+              heatindexC: 0,
+              heatindexF: 0,
+              pressureIn: 0,
+              pressureMb: 0,
+              chanceOfRain: 0,
+              chanceOfSnow: 0,
+              windDegree: 0,
+              windDir: "",
+              windKph: 0,
+              windMph: 0,
+              windchillC: 0,
+              windchillF: 0,
+              condition: {text: '-', icon: '-', code: 0},
+              dewpointC: 0,
+              dewpointF: 0,
+              gustKph: 0,
+              gustMph: 0,
+              cloud: 0,
+              humidity: 0,
+              precipIn: 0,
+              precipMm: 0,
+              visKm: 0,
+              visMiles: 0,
+              willItRain: 0,
+              willItSnow: 0,
+              isDay: 0,
+            },   
           ]
         },
       ]
@@ -154,7 +157,7 @@ export class WeatherPageComponent implements OnInit {
   };
   toggleValue:boolean = false;
   constructor(private http: HttpClient) {
-    this.apiCall({cityName:'bhubaneswar', pinCode:''});
+    this.sbApiCall({cityName:'bhubaneswar'});
     // console.log(dummyData);
     // this.dataObj = dummyData;
     
@@ -176,6 +179,14 @@ export class WeatherPageComponent implements OnInit {
     });
   }
 
+  sbApiCall(formData: any) {
+    const data = this.http.request("GET", "http://localhost:8762/location/"+formData.cityName);
+
+    data.subscribe((val)=>{
+      this.dataObj = val;
+    })
+  }
+
   ngOnInit(): void {
   }
 
@@ -183,7 +194,9 @@ export class WeatherPageComponent implements OnInit {
     console.log("@output works on parent");
     
     console.log(formData);
-    this.apiCall(formData);
+    // this.apiCall(formData);
+    this.sbApiCall(formData);
+
   }
 
   menuToggle(val:any) {
