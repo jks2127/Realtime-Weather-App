@@ -3,7 +3,7 @@
     <div (click)="close()" class="close-button"></div>
 
     <div>
-        <form [formGroup]="addLocationForm" (ngSubmit)="addLocation()" class="form" >
+        <form [formGroup]="addLocationForm" (submit)="addLocation()" class="form" >
             <input type="text" formControlName="locationName" name="locationName" class="input-tag">
             <button type="submit">Add</button>
         </form>

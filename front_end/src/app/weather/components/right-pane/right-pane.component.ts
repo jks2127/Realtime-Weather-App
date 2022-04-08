@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-right-pane',
@@ -24,11 +24,16 @@ export class RightPaneComponent implements OnInit {
   ngOnChanges() { }
 
   addLocationForm = this.formBuilder.group({
-    locationName:[''],
+    locationName:['', Validators.required],
   })
 
-  addLocation() {    
-    this.outputFormData.emit(this.addLocationForm.value)
+  addLocation() {
+    if(this.addLocationForm.valid) {
+      this.outputFormData.emit(this.addLocationForm.value)
+      this.addLocationForm.reset(true);
+    }else {
+      this.errorResponse = "Invalid Location Name";
+    }
   }
 
   deleteLocation(locationId : String) {

@@ -12,7 +12,7 @@ public class GatewayConfiguration {
 
 		return builder.routes()
 				.route(p->p.path("/location/**")
-						.filters(f -> f.addRequestHeader("api_key", "jitu@123"))
+						.filters(f -> f.addResponseHeader("Origin", "http://localhost:4200"))
 						.uri("lb://location-service"))
 				.build();
 	}

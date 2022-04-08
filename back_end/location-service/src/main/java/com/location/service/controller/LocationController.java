@@ -19,7 +19,7 @@ import com.location.service.dto.LocationDTO;
 import com.location.service.entity.Location;
 import com.location.service.services.LocationService;
 
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/location")
 public class LocationController{
@@ -44,8 +44,11 @@ public class LocationController{
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@PostMapping
 	public ResponseEntity<LocationDTO> setLocation(@RequestBody Location location) {
+		System.out.println("------------jugal--------------");
 		Object result = locationService.getWeatherData(location.getLocationName());
 
+		/* checking for a specific string which comes in "result" when there is some error.
+		 * If there is error then taking out only the error message and error code in "exceptionObj" object and sending it as response*/
 		if(!(result.toString().contains("ExceptionFromAPI(code=1006"))) {
 			return locationService.setLocation(location);
 		}else {

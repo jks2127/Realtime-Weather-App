@@ -1,5 +1,6 @@
 <div class="d-flex flex-column flex-md-row flex-nowrap justify-content-around py-0 px-4 mb-2">
     <div class="d-flex flex-row mx-auto flex-grow-1 text-left mx-auto" style="min-width: 50%; ">
+        <!-- Air Quality section -->
         <div class="flex-grow-1" style="min-width: 30%; width: 100%; ">
             <div class="d-flex" style="font-size:smaller;">
                 <div class="font-weight-bold text-green-1 text-left">AIR QUALITY</div>
@@ -12,15 +13,16 @@
             <div class="progress-h rounded pr-2" style="height: 8px;">
                 <div class="rounded" [style]="hProgress"></div>
             </div>
-            <div class="font-weight-bold text-green-1 text-smaller" >Air quality for {{dataObj.location.name || '-'}}.</div>
+            <div class="font-weight-bold text-green-1 text-smaller" >Air quality for {{weatherData.location.name || '-'}}.</div>
             <a href="https://weather.com/en-IN/weather/hourbyhour/l/210fd75d2390dda9d571b110ec978df37e33bd6719cc7a7d284a4ce83c140e4c" >More data from The Weather Channel.</a>
-            <!-- <img src="../../../assets/images/graph3.jpg" style="width: 320px; height: 150px;"/> -->
         </div>
+
+        <!-- UV Index section -->
         <div class="d-flex flex-row mx-4" style="min-width: 35px; ">
             <div class="mx-2 text-center">
                 <div class="text-nowrap">UV INDEX</div>
-                <div class="" style="font-size: 50px; color: rgb(255, 223, 80);">{{dataObj.current.uv | number:'1.1-1'}}</div>
-                <div class="">{{scaleUvIndex[scalePointerUvIndex]}}</div>
+                <div class="" style="font-size: 50px; color: rgb(255, 223, 80);">{{weatherData.current.uv | number:'1.1-1'}}</div>
+                <div class="text-nowrap" style="font-size: 13px; color: rgb(255, 223, 80);">{{scaleUvIndex[scalePointerUvIndex]}}</div>
             </div>
             <div class="px-2">
                 <div class="progress-v position-absolute rounded my-2" style="width: 7px; height: 110px;">
@@ -40,30 +42,30 @@
                 <div class="cover3"></div>
 
                 <ng-container *ngIf="currentTime < 12">
-                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[3]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[4]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[5]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[6]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[7]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[8]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[9]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[10]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[11]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[12]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[13]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num1">{{weatherData.forecast.forecastday[0].hour[3]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{weatherData.forecast.forecastday[0].hour[4]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{weatherData.forecast.forecastday[0].hour[5]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{weatherData.forecast.forecastday[0].hour[6]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{weatherData.forecast.forecastday[0].hour[7]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{weatherData.forecast.forecastday[0].hour[8]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{weatherData.forecast.forecastday[0].hour[9]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{weatherData.forecast.forecastday[0].hour[10]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{weatherData.forecast.forecastday[0].hour[11]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{weatherData.forecast.forecastday[0].hour[12]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{weatherData.forecast.forecastday[0].hour[13]?.tempC | number:'1.0-0'}}</div>
                 </ng-container>
                 <ng-container *ngIf="currentTime >= 12">
-                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[15]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[16]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[17]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[18]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[19]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[20]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[21]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[22]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[23]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[0]?.tempC | number:'1.0-0'}}</div>
-                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[1]?.tempC | number:'1.0-0'}}</div>    
+                    <div class="nums num1">{{weatherData.forecast.forecastday[0].hour[15]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{weatherData.forecast.forecastday[0].hour[16]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{weatherData.forecast.forecastday[0].hour[17]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{weatherData.forecast.forecastday[0].hour[18]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{weatherData.forecast.forecastday[0].hour[19]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{weatherData.forecast.forecastday[0].hour[20]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{weatherData.forecast.forecastday[0].hour[21]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{weatherData.forecast.forecastday[0].hour[22]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{weatherData.forecast.forecastday[0].hour[23]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{weatherData.forecast.forecastday[0].hour[0]?.tempC | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{weatherData.forecast.forecastday[0].hour[1]?.tempC | number:'1.0-0'}}</div>    
                 </ng-container>
 
                 <div class="nums inner-num1">3</div>
@@ -88,7 +90,7 @@
         <!-- Second progress circle -->
         <div class="circle-wrap">
             <div class="circle">
-                <div class="inside-circle font-weight-bold">  {{dataObj.current.tempC}}&#176; </div>
+                <div class="inside-circle font-weight-bold">  {{weatherData.current.tempC}}&#176; </div>
                 <div class="cover1"></div>
                 <div class="cover2"></div>
                 <div class="cover3"></div>
@@ -159,30 +161,30 @@
                 <div class="cover3"></div>
 
                 <ng-container *ngIf="currentTime < 12; else elseblock">
-                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[3]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[4]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[5]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[6]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[7]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[8]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[9]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[10]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[11]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[12]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[13]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num1">{{weatherData.forecast.forecastday[0].hour[3]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{weatherData.forecast.forecastday[0].hour[4]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{weatherData.forecast.forecastday[0].hour[5]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{weatherData.forecast.forecastday[0].hour[6]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{weatherData.forecast.forecastday[0].hour[7]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{weatherData.forecast.forecastday[0].hour[8]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{weatherData.forecast.forecastday[0].hour[9]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{weatherData.forecast.forecastday[0].hour[10]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{weatherData.forecast.forecastday[0].hour[11]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{weatherData.forecast.forecastday[0].hour[12]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{weatherData.forecast.forecastday[0].hour[13]?.chanceOfRain | number:'1.0-0'}}</div>
                 </ng-container>
                 <ng-template #elseblock>
-                    <div class="nums num1">{{dataObj.forecast.forecastday[0].hour[15]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num2">{{dataObj.forecast.forecastday[0].hour[16]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num3">{{dataObj.forecast.forecastday[0].hour[17]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num4">{{dataObj.forecast.forecastday[0].hour[18]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num5">{{dataObj.forecast.forecastday[0].hour[19]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num6">{{dataObj.forecast.forecastday[0].hour[20]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num7">{{dataObj.forecast.forecastday[0].hour[21]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num8">{{dataObj.forecast.forecastday[0].hour[22]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num9">{{dataObj.forecast.forecastday[0].hour[23]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num10">{{dataObj.forecast.forecastday[0].hour[0]?.chanceOfRain | number:'1.0-0'}}</div>
-                    <div class="nums num11">{{dataObj.forecast.forecastday[0].hour[1]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num1">{{weatherData.forecast.forecastday[0].hour[15]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num2">{{weatherData.forecast.forecastday[0].hour[16]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num3">{{weatherData.forecast.forecastday[0].hour[17]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num4">{{weatherData.forecast.forecastday[0].hour[18]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num5">{{weatherData.forecast.forecastday[0].hour[19]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num6">{{weatherData.forecast.forecastday[0].hour[20]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num7">{{weatherData.forecast.forecastday[0].hour[21]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num8">{{weatherData.forecast.forecastday[0].hour[22]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num9">{{weatherData.forecast.forecastday[0].hour[23]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num10">{{weatherData.forecast.forecastday[0].hour[0]?.chanceOfRain | number:'1.0-0'}}</div>
+                    <div class="nums num11">{{weatherData.forecast.forecastday[0].hour[1]?.chanceOfRain | number:'1.0-0'}}</div>
                 </ng-template>
 
                 <div class="nums inner-num1">3</div>

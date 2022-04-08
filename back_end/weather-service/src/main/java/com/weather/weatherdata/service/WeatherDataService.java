@@ -16,6 +16,7 @@ public class WeatherDataService {
 
 	private final String apiKey = "dd57e8592cde4ad999261418220803";
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ResponseEntity<WeatherDTO> getWeatherData(String location) {
 		String uri = "http://api.weatherapi.com/v1/forecast.json?key=" + apiKey + " &q=" + location + "&days=7&aqi=yes";
 
@@ -30,8 +31,7 @@ public class WeatherDataService {
 				.setDestinationNameTokenizer(NameTokenizers.CAMEL_CASE);
 			return new ResponseEntity<WeatherDTO>(mapper.map(result, WeatherDTO.class), HttpStatus.OK);
 		} catch (Exception e) {
-			System.out.println("--------------jitu----"+ e);
-			ExceptionFromAPI exceptionObj =new ExceptionFromAPI();
+			ExceptionFromAPI exceptionObj = new ExceptionFromAPI();
 			exceptionObj.setCode(Integer.parseInt(e.getMessage().substring(e.getMessage().indexOf("{\"code\":"), e.getMessage().indexOf(",")).substring(8)));
 			exceptionObj.setMessage(e.getMessage().substring(e.getMessage().indexOf("\"message\":\""), e.getMessage().indexOf(".\"}}")).substring(11));
 			System.out.println(exceptionObj);

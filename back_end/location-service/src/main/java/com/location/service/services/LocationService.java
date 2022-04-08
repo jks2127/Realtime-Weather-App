@@ -30,9 +30,11 @@ public class LocationService {
 	private WeatherProxy proxy;
 
 	/* Inserting location name into database */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ResponseEntity<LocationDTO> setLocation(Location location) {
 		List<Location> found = locationRepository.findByLocationName(location.getLocationName());
-		System.out.println(found.size());
+		/* Checking whether the location is already in the DB or not
+		 * If already exist , adding error message and code in "exception" object and sending it back*/
 		if (found.size() == 0) {
 			Location locationResponse = locationRepository.save(location);
 			return new ResponseEntity(converter.entityToDTO(locationResponse), HttpStatus.OK);			
@@ -51,10 +53,10 @@ public class LocationService {
 	}
 	public LocationDTO map(LocationDTO item) {
 		Object result = getWeatherData(item.getLocationName());
+		/* Mapping min max temp coming from api and keeping them in "resultDTO" object along with the respective location name then sending it back*/
 		ModelMapper mapper = new ModelMapper();
 		mapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE).setAmbiguityIgnored(true);
 		ForecastDTO resultDTO = mapper.map(result, ForecastDTO.class);
-//		System.out.println(resultDTO);
 		item.setMaxtempC(resultDTO.getForecastday().get(0).getDay().getMaxtempC());
 		item.setMintempC(resultDTO.getForecastday().get(0).getDay().getMintempC());
 
@@ -68,6 +70,8 @@ public class LocationService {
 			return proxy.getWeatherReport(location);
 			
 		} catch (Exception e) {
+			/* If any exception occurs,
+			 * then taking error message and code then setting in "exceptionObj" object and sending it back*/
 			ExceptionFromAPI exceptionObj = new ExceptionFromAPI();
 			System.out.println(e);
 			exceptionObj.setCode(Integer.parseInt(e.getMessage()
@@ -80,12 +84,10 @@ public class LocationService {
 
 	public ResponseEntity<HttpStatus> deleteLocation(String locationId) {
 		try {
-			System.out.println("inside try");
 			this.locationRepository.deleteById(Integer.parseInt(locationId));
 			return new ResponseEntity<>(HttpStatus.OK);
 
 		} catch (Exception e) {
-			System.out.println("inside catch");
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}

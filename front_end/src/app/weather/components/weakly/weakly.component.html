@@ -1,6 +1,8 @@
 <div class="d-flex flex-row align-content-stretch py-0 px-2 mb-2 border-bottom border-green-1">
+    
+    <!-- Left side container -->
     <div class="col-sm-6 col-md-7 text-left border-right border-green-1">
-        <div  *ngFor="let item of dataObj.forecast.forecastday">
+        <div  *ngFor="let item of weatherData.forecast.forecastday">
             <div class="row" *ngIf="item.date !== todayDate">
                 <div class="col-5 col-md-6 mb-1">{{item.date | date: 'EEEE'}}</div>
                 <div class="col-2 col-md-2 mb-2">
@@ -10,23 +12,24 @@
                 <div class="col-1 col-md-2 text-left text-green-1 font-weight-bold">{{item.day.mintempC | number:'1.0-0'}}</div>
             </div>
         </div>
-        
     </div>
+
+    <!-- Right side container  -->
     <div class="col-sm-6 col-md-5 text-left">
-        <div class="mx-auto mb-2" style="max-width: 200px;">
-            Sunrise: {{dataObj.forecast.forecastday[0].astro.sunrise && dataObj.forecast.forecastday[0].astro.sunrise || '-'}}
+        <div class="astro-list mx-auto mb-2">
+            Sunrise: {{weatherData.forecast.forecastday[0].astro.sunrise && weatherData.forecast.forecastday[0].astro.sunrise || '-'}}
         </div>
-        <div class="mx-auto mb-2" style="max-width: 200px;">
-            Sunset: {{dataObj.forecast.forecastday[0].astro.sunset && dataObj.forecast.forecastday[0].astro.sunset || '-'}}
+        <div class="astro-list mx-auto mb-2">
+            Sunset: {{weatherData.forecast.forecastday[0].astro.sunset && weatherData.forecast.forecastday[0].astro.sunset || '-'}}
         </div>
-        <div class="mx-auto mb-2" style="max-width: 200px;">
-            Feels Like: {{dataObj.current.feelslikeC && dataObj.current.feelslikeC  || '-'}} &#176;C
+        <div class="astro-list mx-auto mb-2">
+            Feels Like: {{weatherData.current.feelslikeC && weatherData.current.feelslikeC  || '-'}} &#176;C
         </div>
-        <div class="mx-auto mb-2" style="max-width: 200px;">
-            Humidity: {{dataObj.current.humidity && dataObj.current.humidity + '%' || '-'}}
+        <div class="astro-list mx-auto mb-2">
+            Humidity: {{weatherData.current.humidity && weatherData.current.humidity + '%' || '-'}}
         </div>
-        <div class="mx-auto mb-2" style="max-width: 200px;">
-            Wind: {{dataObj.current.windKph && dataObj.current.windDir + ' ' + dataObj.current.windKph + " kmph" || '-'}}
+        <div class="astro-list mx-auto mb-2">
+            Wind: {{weatherData.current.windKph && weatherData.current.windDir + ' ' + weatherData.current.windKph + " kmph" || '-'}}
         </div>
     </div>
 </div>

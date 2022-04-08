@@ -1,11 +1,15 @@
 <div class="py-0 px-2 pt-3 d-flex flex-row align-content-stretch">
+    
+    <!-- Left side container -->
     <div class="col-6 text-start mb-3">
-        <div class="font-weight-normal text-nowrap" style="font-size: 48px;">{{dataObj.location.name}}</div>
-        <div>Sunny</div>
-        <div class="text-nowrap">H:{{dataObj.forecast.forecastday[0].day.maxtempC}}&#176; L:{{dataObj.forecast.forecastday[0].day.mintempC}}&#176;</div>
-        <div><strong>{{dataObj.forecast.forecastday[0].date | date:'EEEE'}}</strong> Today</div> 
+        <div class="font-weight-normal text-nowrap" style="font-size: 48px;">{{weatherData.location.name}}</div>
+        <div>{{weatherData.current.condition.text}}</div>
+        <div class="text-nowrap">H:{{weatherData.forecast.forecastday[0].day.maxtempC}}&#176; L:{{weatherData.forecast.forecastday[0].day.mintempC}}&#176;</div>
+        <div><strong>{{weatherData.forecast.forecastday[0].date | date:'EEEE'}}</strong> Today</div> 
     </div>
+
+    <!-- Right side container -->
     <div class="col-6 text-right font-weight-light" >
-        <span style="font-size: 100px;">{{dataObj.current.tempC}}&#176;</span>
+        <span style="font-size: 100px;">{{weatherData.current.tempC}}&#176;</span>
     </div>
 </div>

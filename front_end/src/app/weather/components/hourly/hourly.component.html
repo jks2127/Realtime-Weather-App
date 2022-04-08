@@ -1,21 +1,18 @@
 <!-- 2nd row -->
 <div class="py-0 px-4 border-top border-bottom border-green-1 mb-2">
     <div class="row text-center py-1 flex-nowrap overflow-hidden">
-
-        <div class="col-1 px-2" *ngFor="let item of dataObj.forecast.forecastday[0].hour; let i=index;">
-            <!-- <ng-container *ngIf="item.time_epoch > dataObj.location.localtime_epoch || i >= 12"> -->
-                <div id="{{item.timeEpoch}}">
-                    <div class="d-block font-weight-bold" 
-                        *ngIf="(item.timeEpoch/1000 >= dataObj.current.lastUpdatedEpoch/1000) && ((item.timeEpoch/1000)*1000 < ((dataObj.current.lastUpdatedEpoch/1000)*1000)+3600) ; 
-                        else elseBlock" >NOW
-                    </div>
-                    <ng-template #elseBlock>
-                        <span class="d-block text-nowrap" id="elseBlock">{{item.time | date:'h a'}}</span>
-                    </ng-template>
-                    <img src="{{item.condition.icon}}" width="47px" height="47px" class=""/>
-                    <span class="d-block" id="wrapper-hour-now">{{item.tempC}}&#176;</span>
+        <div class="col-1 px-2" *ngFor="let item of weatherData.forecast.forecastday[0].hour; let i=index;">
+            <div id="{{item.timeEpoch}}">
+                <div class="d-block font-weight-bold" 
+                    *ngIf="(item.timeEpoch/1000 >= weatherData.current.lastUpdatedEpoch/1000) && ((item.timeEpoch/1000)*1000 < ((weatherData.current.lastUpdatedEpoch/1000)*1000)+3600) ; 
+                    else elseBlock" >NOW
                 </div>
-            <!-- </ng-container> -->
+                <ng-template #elseBlock>
+                    <span class="d-block text-nowrap" id="elseBlock">{{item.time | date:'h a'}}</span>
+                </ng-template>
+                <img src="{{item.condition.icon}}" width="47px" height="47px" class=""/>
+                <span class="d-block" id="wrapper-hour-now">{{item.tempC}}&#176;</span>
+            </div>
         </div>
     </div>
 </div>

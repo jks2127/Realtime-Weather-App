@@ -1,15 +1,22 @@
-<div class="text-white w-full min-vh-100" style="background-color: #4F9BC4;">
+<div class="main-page text-white w-full min-vh-100 ">
     <div class="d-flex flex-column col-12 w-full h-full">
 
-        <app-header [dataObj]="dataObj"></app-header>
-        <app-hourly [dataObj]="dataObj"></app-hourly>
-        <app-weakly [dataObj]="dataObj"></app-weakly>
-        <app-graphs [dataObj]="dataObj"></app-graphs>
+        <app-header [weatherData]="weatherData"></app-header>
+        <app-hourly [weatherData]="weatherData"></app-hourly>
+        <app-weakly [weatherData]="weatherData"></app-weakly>
+        <app-graphs [weatherData]="weatherData"></app-graphs>
         <app-footer (menuToggleValue)="menuToggle($event)"></app-footer>
             
         <ng-container *ngIf="toggleValue">
         <!-- <ng-container *ngIf="true"> -->
-            <app-right-pane class="side-pane" [locationList]="locationList" [errorResponse]="errorResponse" (outputFormData)="addLocation($event)" (toggleValue)="menuToggle($event)" (locationName)="onClickLocationList($event)" (locationIdToDelete)="deleteLocation($event)"></app-right-pane>
+            <app-right-pane class="side-pane" 
+                [locationList]="locationList" 
+                (toggleValue)="menuToggle($event)" 
+                [errorResponse]="errorResponse" 
+                (outputFormData)="addLocation($event)" 
+                (locationName)="onClickLocationList($event)" 
+                (locationIdToDelete)="deleteLocation($event)">
+            </app-right-pane>
         </ng-container>
 
     </div>

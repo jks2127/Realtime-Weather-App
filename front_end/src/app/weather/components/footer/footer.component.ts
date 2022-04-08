@@ -7,13 +7,12 @@ import { Component, OnInit, Output,EventEmitter } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   @Output() menuToggleValue = new EventEmitter();
-  toggle:boolean = false;
+  toggleValue:boolean = false;
+  
   constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+  
   menuToggle() {
-    this.menuToggleValue.emit(!this.toggle);    
+    this.menuToggleValue.emit(!this.toggleValue);    
   }
-
 }
