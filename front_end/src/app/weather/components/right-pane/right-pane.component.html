@@ -1,11 +1,27 @@
 <div class="main">
+    
+    <div (click)="close()" class="close-button"></div>
 
-    <form [formGroup]="weatherForm" (ngSubmit)="weatherFormSubmit()" class="form" >
-        <input type="text" formControlName="cityName" name="cityName" class="input-tag" placeholder="Your Nearest City Name">
-        <!-- <div class="ml-2">OR</div>
-        <input type="text" formControlName="pinCode" name="pinCode" class="input-tag" placeholder="Postal Pincode"> -->
-        <button type="submit">SUBMIT</button>
-        <button (click)="close()">close</button>
-    </form>
+    <div>
+        <form [formGroup]="addLocationForm" (ngSubmit)="addLocation()" class="form" >
+            <input type="text" formControlName="locationName" name="locationName" class="input-tag">
+            <button type="submit">Add</button>
+        </form>
+        
+    </div>
+    <div class="error-response-message-container"> 
+        <div class="error-response-message">{{errorResponse}}</div>
+    </div>
+
+    <div class="location-list-container">
+        <div *ngFor="let item of locationList" class="location-list">
+            <div class="name" (click)="onClickLocationList(item.locationName)">{{item.locationName}}</div>
+            <div class="temp">{{item.mintempC | number:'2.0-0'}}&#176;C</div>
+            <div class="temp">{{item.maxtempC | number:'2.0-0'}}&#176;C </div>
+            <div class="delete" (click)="deleteLocation(item.locationId)"></div>
+
+            <div class="loader" *ngIf="showLoader.flag && showLoader.id == item.locationId"></div>
+        </div>
+    </div>
 
 </div>

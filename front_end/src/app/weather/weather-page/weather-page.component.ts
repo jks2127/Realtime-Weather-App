@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { Component, Input, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import dummyData from "../../../assets/dummyData3days.json";
 
 @Component({
@@ -156,51 +156,57 @@ export class WeatherPageComponent implements OnInit {
     },     
   };
   toggleValue:boolean = false;
-  constructor(private http: HttpClient) {
-    this.sbApiCall({cityName:'bhubaneswar'});
-    // console.log(dummyData);
-    // this.dataObj = dummyData;
-    
-  }
+  locationList: any;
+  errorResponse: any;
   
-  apiCall(formData: any) {
-    const params = new HttpParams()
-    .set('key','dd57e8592cde4ad999261418220803')
-    .set('q', formData.cityName)
-    .set('aqi', 'yes')
-    .set('alerts','no')
-    .set('days', 6);
-
-    const data = this.http.request("GET", " http://api.weatherapi.com/v1/forecast.json", {params});
-
-    data.subscribe((val)=>{
-      this.dataObj = val;
-      console.log(this.dataObj);
-    });
+  constructor(private http: HttpClient) {
+    this.sbApiCall('bhubaneswar');   
+    this.getLocationList(); 
   }
+
+  ngOnInit(): void {}
 
   sbApiCall(formData: any) {
-    const data = this.http.request("GET", "http://localhost:8762/location/"+formData.cityName);
-
-    data.subscribe((val)=>{
+    this.http.request("GET", "http://localhost:8762/location/"+formData).subscribe((val)=>{
       this.dataObj = val;
     })
   }
 
-  ngOnInit(): void {
+  getLocationList() {
+    this.http.get("http://localhost:8762/location/all").subscribe(data =>{
+      this.locationList = data;
+    })
   }
 
-  getFormData(formData: any) {
-    console.log("@output works on parent");
-    
-    console.log(formData);
-    // this.apiCall(formData);
-    this.sbApiCall(formData);
 
+  addLocation(formData: any) {
+    const options = {
+      'locationName':formData.locationName
+    }
+    this.errorResponse = '';
+   
+    this.http.post("http://localhost:8800/location", options).subscribe(val=>{
+      this.getLocationList();
+    },(err)=>{
+      this.errorResponse = err.error.message;
+    })
+  }
+
+  deleteLocation(locationId: String){
+    this.http.delete("http://localhost:8800/location/"+locationId).subscribe(val=>{
+      this.getLocationList();
+    })
   }
 
   menuToggle(val:any) {
-    console.log("menu button clicked weather page", val);
     this.toggleValue= val;
+  }
+
+  onClickLocationList(locationName:any) {
+    const data = this.http.request("GET", "http://localhost:8762/location/"+locationName);
+
+    data.subscribe((locationName)=>{
+      this.dataObj = locationName;
+    })
   }
 }

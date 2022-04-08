@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -9,24 +9,39 @@ import { FormBuilder } from '@angular/forms';
 export class RightPaneComponent implements OnInit {
   @Output() outputFormData = new EventEmitter();
   @Output() toggleValue = new EventEmitter();
+  @Input() locationList:any;
+  @Output() locationName = new EventEmitter();
+  @Output() locationIdToDelete = new EventEmitter();
+  @Input() errorResponse:any;
+
+  showLoader:any = {
+    flag: false,
+    id:''
+  };
 
   constructor(private formBuilder: FormBuilder) { }
+  ngOnInit(): void { }
+  ngOnChanges() { }
 
-  weatherForm = this.formBuilder.group({
-    cityName:['bhubaneswar'],
-    pinCode:[''],
+  addLocationForm = this.formBuilder.group({
+    locationName:[''],
   })
 
-  ngOnInit(): void {
+  addLocation() {    
+    this.outputFormData.emit(this.addLocationForm.value)
   }
 
-  weatherFormSubmit() {
-    console.log("weather form submitted", this.weatherForm.value);
-    this.outputFormData.emit(this.weatherForm.value)
+  deleteLocation(locationId : String) {
+    this.showLoader.flag = true;
+    this.showLoader.id = locationId;
+    this.locationIdToDelete.emit(locationId);
   }
+
+  onClickLocationList(locationName:String){
+    this.locationName.emit(locationName);
+  }
+
   close() {
-    console.log("close button clicked");
     this.toggleValue.emit(false);
-    
   }
 }

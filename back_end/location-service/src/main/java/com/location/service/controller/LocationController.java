@@ -6,43 +6,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.location.service.dto.ExceptionFromAPI;
 import com.location.service.dto.LocationDTO;
 import com.location.service.entity.Location;
 import com.location.service.services.LocationService;
 
-@RequestMapping("/location")
+@CrossOrigin("*")
 @RestController
+@RequestMapping("/location")
 public class LocationController{
 
 	@Autowired
 	public LocationService locationService;
-
+	
+	/* Fetching the list of locations along with IDs from database */
 	@GetMapping("/all")
 	public List<LocationDTO> getLocation() {
 		return locationService.getLocationDTO();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
+	/* Fetching weather details based on the location name passed in url path */
 	@GetMapping("/{location}")
-	public ResponseEntity<Object> getWeatherData(@PathVariable String location,@RequestHeader(name="api_key") String api_key) {
-		System.out.println("api_key");
-//		if(api_key.equals("jitu@123")) {
-			 Object result = locationService.getWeatherData(location,api_key);	
-			 return new ResponseEntity<Object>(result, HttpStatus.OK);
-//		}
-//		return new ResponseEntity<Object>(null, HttpStatus.UNAUTHORIZED);
+	public ResponseEntity<Object> getWeatherData(@PathVariable String location) {
+		Object result = locationService.getWeatherData(location);
+		return new ResponseEntity<Object>(result, HttpStatus.OK);
 	}
 	
-	@PostMapping("")
-	public LocationDTO setLocation(@RequestBody Location location) {
-		return locationService.setLocation(location);
+	/* Inserting location name into database */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@PostMapping
+	public ResponseEntity<LocationDTO> setLocation(@RequestBody Location location) {
+		Object result = locationService.getWeatherData(location.getLocationName());
+
+		if(!(result.toString().contains("ExceptionFromAPI(code=1006"))) {
+			return locationService.setLocation(location);
+		}else {
+			ExceptionFromAPI exceptionObj =new ExceptionFromAPI();
+			exceptionObj.setCode(Integer.parseInt(result.toString().substring(result.toString().indexOf("(code="),result.toString().indexOf(", message")).substring(6)));
+			exceptionObj.setMessage(result.toString().substring(result.toString().indexOf(", message="), result.toString().indexOf("),")).substring(10));
+			return new ResponseEntity(exceptionObj ,HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	/* Deleting location name from database */
+	@DeleteMapping("{locationId}")
+	public ResponseEntity<HttpStatus> deleteLocation(@PathVariable String locationId) {
+		System.out.println(locationId.getClass().getTypeName());
+		return this.locationService.deleteLocation(locationId);
 	}
 }

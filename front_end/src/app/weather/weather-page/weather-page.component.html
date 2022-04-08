@@ -1,15 +1,16 @@
-<div class="text-white container-fluid min-vh-100" style="background-color: #4F9BC4;">
+<div class="text-white w-full min-vh-100" style="background-color: #4F9BC4;">
     <div class="d-flex flex-column col-12 w-full h-full">
 
-    <app-header [dataObj]="dataObj"></app-header>
-    <app-hourly [dataObj]="dataObj"></app-hourly>
-    <app-weakly [dataObj]="dataObj"></app-weakly>
-    <app-graphs [dataObj]="dataObj"></app-graphs>
-    <app-footer (menuToggleValue)="menuToggle($event)"></app-footer>
-        
-    <ng-container *ngIf="toggleValue">
-        <app-right-pane class="side-pane" (outputFormData)="getFormData($event)" (toggleValue)="menuToggle($event)"></app-right-pane>
-    </ng-container>
+        <app-header [dataObj]="dataObj"></app-header>
+        <app-hourly [dataObj]="dataObj"></app-hourly>
+        <app-weakly [dataObj]="dataObj"></app-weakly>
+        <app-graphs [dataObj]="dataObj"></app-graphs>
+        <app-footer (menuToggleValue)="menuToggle($event)"></app-footer>
+            
+        <ng-container *ngIf="toggleValue">
+        <!-- <ng-container *ngIf="true"> -->
+            <app-right-pane class="side-pane" [locationList]="locationList" [errorResponse]="errorResponse" (outputFormData)="addLocation($event)" (toggleValue)="menuToggle($event)" (locationName)="onClickLocationList($event)" (locationIdToDelete)="deleteLocation($event)"></app-right-pane>
+        </ng-container>
 
     </div>
 </div>

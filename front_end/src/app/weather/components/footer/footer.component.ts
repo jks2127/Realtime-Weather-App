@@ -13,9 +13,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
   menuToggle() {
-    console.log("menu button clicked");
-    this.menuToggleValue.emit(!this.toggle);
-    
+    this.menuToggleValue.emit(!this.toggle);    
   }
 
 }
