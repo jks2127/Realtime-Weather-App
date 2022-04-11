@@ -8,7 +8,6 @@
         <app-footer (menuToggleValue)="menuToggle($event)"></app-footer>
             
         <ng-container *ngIf="toggleValue">
-        <!-- <ng-container *ngIf="true"> -->
             <app-right-pane class="side-pane" 
                 [locationList]="locationList" 
                 (toggleValue)="menuToggle($event)" 

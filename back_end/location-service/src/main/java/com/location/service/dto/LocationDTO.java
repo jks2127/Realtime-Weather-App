@@ -4,8 +4,12 @@ import lombok.Data;
 
 @Data
 public class LocationDTO {
-	private String locationId;
-	private String locationName;
-	private float maxtempC;
-	private float mintempC;
+	private String name;
+	private String region;
+	private String country;
+	private float lat;
+	private float lon;
+	private String tzId;
+	private long localtimeEpoch;
+	private String localtime;
 }

@@ -28,9 +28,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   bootstrap: [WeatherPageComponent]
 })
 export class WeatherModule {
-  constructor(){
-
-    console.log("weather module");
-  }
+  constructor(){ }
   
- }
+}

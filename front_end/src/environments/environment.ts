@@ -6,6 +6,12 @@ export const environment = {
   production: false
 };
 
+const BASE_URL= "http://localhost:8762/";
+export const ENDPOINTS = {
+  GATEWAY: BASE_URL + "location/",
+  LOCATION: "http://localhost:8800/location"
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

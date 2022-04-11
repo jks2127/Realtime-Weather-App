@@ -12,7 +12,7 @@ public class GatewayConfiguration {
 
 		return builder.routes()
 				.route(p->p.path("/location/**")
-						.filters(f -> f.addResponseHeader("Origin", "http://localhost:4200"))
+						.filters(f -> f.addRequestHeader("Access-Control-Allow-Origin", "http://localhost:4200"))
 						.uri("lb://location-service"))
 				.build();
 	}

@@ -10,11 +10,11 @@ import com.location.service.entity.Location;
 
 @Component
 public class Converter {
-	public LocationDTO entityToDTO(Location location) {
+	public ResponseLocationDTO entityToDTO(Location location) {
 		ModelMapper mapper = new ModelMapper();
-		return mapper.map(location, LocationDTO.class);
+		return mapper.map(location, ResponseLocationDTO.class);
 	}
-	public List<LocationDTO> entityToDTOList(List<Location> locationList) {
+	public List<ResponseLocationDTO> entityToDTOList(List<Location> locationList) {
 		return locationList.stream().map(location -> entityToDTO(location)).collect(Collectors.toList());
 	}
 }

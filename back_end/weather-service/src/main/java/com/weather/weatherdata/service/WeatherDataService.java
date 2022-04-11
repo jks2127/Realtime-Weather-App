@@ -3,25 +3,26 @@ package com.weather.weatherdata.service;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.convention.NameTokenizers;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.weather.weatherdata.dto.ExceptionFromAPI;
 import com.weather.weatherdata.dto.WeatherDTO;
 
 @Service
 public class WeatherDataService {
+	
+	@Value("${service.url}")
+	private String endpoint;
 
-	private final String apiKey = "dd57e8592cde4ad999261418220803";
-
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ResponseEntity<WeatherDTO> getWeatherData(String location) {
-		String uri = "http://api.weatherapi.com/v1/forecast.json?key=" + apiKey + " &q=" + location + "&days=7&aqi=yes";
+		String uri = endpoint + location + "&days=7&aqi=yes";
 
 		RestTemplate restTemplate = new RestTemplate();
-		
+		ResponseEntity<WeatherDTO> response = null;
+
 		try {
 			Object result = restTemplate.getForObject(uri, Object.class);
 			ModelMapper mapper = new ModelMapper();
@@ -29,13 +30,11 @@ public class WeatherDataService {
 				.setMatchingStrategy(MatchingStrategies.STANDARD)
 				.setSourceNameTokenizer(NameTokenizers.UNDERSCORE)
 				.setDestinationNameTokenizer(NameTokenizers.CAMEL_CASE);
-			return new ResponseEntity<WeatherDTO>(mapper.map(result, WeatherDTO.class), HttpStatus.OK);
+			
+			response = new ResponseEntity<WeatherDTO>(mapper.map(result, WeatherDTO.class), HttpStatus.OK);
 		} catch (Exception e) {
-			ExceptionFromAPI exceptionObj = new ExceptionFromAPI();
-			exceptionObj.setCode(Integer.parseInt(e.getMessage().substring(e.getMessage().indexOf("{\"code\":"), e.getMessage().indexOf(",")).substring(8)));
-			exceptionObj.setMessage(e.getMessage().substring(e.getMessage().indexOf("\"message\":\""), e.getMessage().indexOf(".\"}}")).substring(11));
-			System.out.println(exceptionObj);
-			return new ResponseEntity(exceptionObj ,HttpStatus.BAD_REQUEST);
 		}
+		
+		return response;
 	}
 }

@@ -3,8 +3,9 @@ package com.location.service.dto;
 import lombok.Data;
 
 @Data
-public class ExceptionFromAPI {
+public class ConditionDTO {
+	private String text;
+	private String icon;
 	private int code;
-	private String message;
 
 }

@@ -1,0 +1,21 @@
+#
+#server:
+#  port: 8762
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone:  http://eurekaserver:eurekaserver@localhost:8081/eureka/
+#spring:
+#  application:#    name: api-gateway
+#  cloud:#    gateway:#      routes:#      - id: location-service
+#        uri: http://localhost:8800/
+#        predicates:#        - Path=/location/**
+#        filters:
+#        - AddRequestHeader=first-request, first-request-header
+#        - AddResponseHeader=first-response, first-response-header
+#      - id: weather-data
+#        uri: http://localhost:8900/
+#        predicates:#        - Path=/weatherReport/** 
+#        filters:
+#         - AddRequestHeader=second-request, second-request-header
+#         - AddResponseHeader=second-response, second-response-header

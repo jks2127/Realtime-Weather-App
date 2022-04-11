@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-
+import { ENDPOINTS } from "../../../environments/environment";
 @Component({
   selector: 'app-weather-page',
   templateUrl: './weather-page.component.html',
@@ -166,30 +166,30 @@ export class WeatherPageComponent implements OnInit {
   ngOnChanges(): void { }
   
   getWeatherData(locaitonName: String) {
-    this.http.get("http://localhost:8762/location/"+locaitonName).subscribe((responseDate)=>{
+    this.http.get(ENDPOINTS.GATEWAY + locaitonName).subscribe((responseData)=>{
       this.toggleValue = false;
-      this.weatherData = responseDate;
+      this.weatherData = responseData;
       this.errorResponse = '';
     })
   }
 
   getLocationList() {
-    this.http.get("http://localhost:8762/location/all").subscribe(responseDate =>{
-      this.locationList = responseDate;
+    this.http.get(ENDPOINTS.GATEWAY + "all").subscribe(responseData =>{
+      this.locationList = responseData;      
     })
   }
 
   addLocation(formData: any) {   
-    this.http.post("http://localhost:8800/location", {'locationName': formData.locationName}).subscribe(()=>{
+    this.http.post(ENDPOINTS.LOCATION, {'locationName': formData.locationName}).subscribe(()=>{
       this.errorResponse = '';
       this.getLocationList();
     },(err)=>{
-      this.errorResponse = err.error.message;
+      this.errorResponse = err.error;
     })
   }
 
   deleteLocation(locationId: String){
-    this.http.delete("http://localhost:8800/location/"+locationId).subscribe(()=>{
+    this.http.delete(ENDPOINTS.LOCATION + locationId).subscribe(()=>{
       this.getLocationList();
     })
   }
