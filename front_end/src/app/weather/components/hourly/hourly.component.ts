@@ -16,9 +16,7 @@ export class HourlyComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.list.length);
     this.list = [];
-    console.log(this.weatherData);
     
     for (let i = 0; i < 2; i++) {      
       this.weatherData.forecast.forecastday[i]?.hour.forEach((item: any) => {
@@ -28,8 +26,4 @@ export class HourlyComponent implements OnInit {
       });
     }
   };
-
-  ngAfterViewChecked() {        
-    document.getElementById(this.epochNow.toString())?.scrollIntoView({inline: "start", behavior: 'smooth' });
-  }
 }
