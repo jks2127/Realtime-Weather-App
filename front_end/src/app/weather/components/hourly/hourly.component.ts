@@ -7,7 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HourlyComponent implements OnInit {
   @Input() weatherData?: any;
   epochNow!: number;
-  list:any = [];
+  list: Array<any> = new Array({
+    code: 0,
+    icon: "",
+    text: ""
+  });
   
   constructor() {}
 
@@ -16,14 +20,17 @@ export class HourlyComponent implements OnInit {
   }
 
   ngOnChanges() {
+    this.getHourlyData();
+  };
+
+  getHourlyData() {
     this.list = [];
-    
     for (let i = 0; i < 2; i++) {      
       this.weatherData.forecast.forecastday[i]?.hour.forEach((item: any) => {
-        if ((Math.trunc(item.timeEpoch/1000) >= Math.trunc(this.weatherData.current.lastUpdatedEpoch/1000)) && (this.list.length < 12)) {
-          this.list.push(item);
+        if ((item.tempC!=0) && (Math.trunc(item.timeEpoch/1000) >= Math.trunc(this.weatherData.current.lastUpdatedEpoch/1000)) && (this.list.length < 12)) {
+          this.list.push(item);          
         }
       });
     }
-  };
+  }
 }

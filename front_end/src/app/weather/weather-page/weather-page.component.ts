@@ -189,7 +189,7 @@ export class WeatherPageComponent implements OnInit {
   }
 
   deleteLocation(locationId: String){
-    this.http.delete(ENDPOINTS.LOCATION + locationId).subscribe(()=>{
+    this.http.delete(ENDPOINTS.LOCATION + '/' + locationId).subscribe(()=>{
       this.getLocationList();
     })
   }
