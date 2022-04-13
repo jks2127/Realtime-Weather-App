@@ -2,11 +2,11 @@ import { formatDate } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-weakly',
-  templateUrl: './weakly.component.html',
-  styleUrls: ['./weakly.component.scss']
+  selector: 'app-weekly',
+  templateUrl: './weekly.component.html',
+  styleUrls: ['./weekly.component.scss']
 })
-export class WeaklyComponent implements OnInit {
+export class WeeklyComponent implements OnInit {
   @Input() weatherData?: any;
   todayDate!: String;
   constructor() { }

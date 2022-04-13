@@ -1,5 +1,36 @@
 .main-page {
     background-color: #4F9BC4;
+
+    $breakpoint-tablet: 768px;
+    @media (min-width: $breakpoint-tablet) {
+        .header-container {
+            min-height: 170px;
+            height: 25vh;
+        }
+        .hourly-container {
+            min-height: 100px;
+            height: 17vh;
+        }
+        .weekly-container {
+            min-height: 170px;
+            height: 28vh;
+        }
+    }
+    $breakpoint-mobile: 300px;
+    @media (min-width: $breakpoint-mobile ) and (max-width: $breakpoint-tablet) {
+        .header-container {
+            min-height: 180px;
+            height: 21vh;
+        }
+        .hourly-container {
+            min-height: 130px;
+            height: 15vh;
+        }
+        .weekly-container {
+            min-height: 190px;
+            height: 10vh;
+        }
+    }
 }
 
 .side-pane {

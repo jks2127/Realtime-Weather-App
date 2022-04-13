@@ -1,11 +1,11 @@
 <div class="main-page text-white w-full min-vh-100 ">
-    <div class="d-flex flex-column col-12 w-full h-full">
+    <div class="d-flex flex-column col-12 w-full min-vh-100">
 
-        <app-header [weatherData]="weatherData"></app-header>
-        <app-hourly [weatherData]="weatherData"></app-hourly>
-        <app-weakly [weatherData]="weatherData"></app-weakly>
-        <app-graphs [weatherData]="weatherData"></app-graphs>
-        <app-footer (menuToggleValue)="menuToggle($event)"></app-footer>
+        <app-header [weatherData]="weatherData" class="header-container "></app-header>
+        <app-hourly [weatherData]="weatherData" class="hourly-container "></app-hourly>
+        <app-weekly [weatherData]="weatherData" class="weekly-container "></app-weekly>
+        <app-graphs [weatherData]="weatherData" class="graphs-container"></app-graphs>
+        <app-footer (menuToggleValue)="menuToggle($event)" class="mb-4 mt-auto"></app-footer>
             
         <ng-container *ngIf="toggleValue">
             <app-right-pane class="side-pane" 

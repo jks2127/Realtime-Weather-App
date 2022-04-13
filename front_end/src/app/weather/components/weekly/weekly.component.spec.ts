@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WeaklyComponent } from './weakly.component';
+import { WeeklyComponent } from './weekly.component';
 
-describe('WeaklyComponent', () => {
-  let component: WeaklyComponent;
-  let fixture: ComponentFixture<WeaklyComponent>;
+describe('WeeklyComponent', () => {
+  let component: WeeklyComponent;
+  let fixture: ComponentFixture<WeeklyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WeaklyComponent ]
+      declarations: [ WeeklyComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WeaklyComponent);
+    fixture = TestBed.createComponent(WeeklyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -10,3 +10,11 @@
     right: 0;
     font-size: 100px;
 }
+@media (max-width: 414px) {
+    .temp {
+        position: absolute;
+        bottom: 0%;
+        right: 0;
+        font-size: 80px;
+    }
+}

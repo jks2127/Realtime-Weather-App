@@ -20,14 +20,37 @@
     style for not overriding the default color change behaviour of anchor tag in HTML*/
 a:link, a:visited, a:hover {
     text-decoration: none;
-    font-size:small;
+    font-size:smaller;
     font-weight: bold;
     color:rgb(146, 193, 219);
+}
+@media (max-width: 414px) {
+    .for-tablet {
+        display: none;
+    }
+}
+@media (min-width: 415px) {
+    .for-mobile {
+        display: none;
+    }
 }
  
 //styles for progress-circle
 .progress-circle-container {
-    min-width: 50%; height: auto; padding-left: 30px; padding-right: 30px;padding-top: 10px;
+    min-width: 50%; 
+    width: 110%; 
+    height: auto;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+@media (max-width: 414px) {
+    .progress-circle-container {
+        width: 115%; 
+        height: auto;
+        padding-top: 5vh;
+        padding-bottom: 20px;
+        padding-left: 0px;
+    }   
 }
 .circle-wrap {
     margin: 10px auto;
